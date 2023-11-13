@@ -89,7 +89,7 @@ function correctAnswer(event){
         feedbackEl.textContent ="Correct!";
     } else{
         feedbackEl.textContent ="Wrong";
-    	timerCount -= 10;
+    	timerCount =timerCount- 10;
     }
     feedbackEl.classList.remove("hide");
     setTimeout(() => {
@@ -115,9 +115,9 @@ function highScores(){
     var intials=intialsinput.value.trim();
     if(intials!==''){
         var newHighscore={intials,score};
-        var highestScores=JSON.parse(localStorage.getItem("highScores"))||[];
+        var highestScores=JSON.parse(localStorage.getItem("highestScores"))||[];
         highestScores.push(newHighscore);
-        localStorage.setItem('highestScores',JSON.stringify(highestScores));
+        localStorage.setItem('highestScores', JSON.stringify(highestScores));
         window.location.href="highscores.html";
     }
 };
