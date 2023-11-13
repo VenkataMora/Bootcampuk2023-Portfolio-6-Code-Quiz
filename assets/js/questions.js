@@ -1,18 +1,15 @@
 var questionAnswers = [
     {
-        number: 1,
         ques: "Javascript is an _______ language?",
         answer: 'Object-Oriented',
         options: ["Object-Oriented", "Object-Based", "Procedural", "None of the above"]
     },
     {
-        number: 2,
         ques: "What does HTML stand for in programming?",
         answer: 'HyperText Markup Language',
         options: ["HyperText Markup Language", "HypterText Marketing Language", "High Text Machine Learning", "HTML"]
     },
     {
-        number: 3,
         ques: "Which programming language is used to create websites?",
         answer: 'HTML/CSS/JavaScript',
         options: [
@@ -23,7 +20,7 @@ var questionAnswers = [
         ]
     },
     {
-        number: 4,
+
         ques: " Which function is used to serialize an object into a JSON string in Javascript?",
         answer: 'stringify()',
         options: [
@@ -36,18 +33,25 @@ var questionAnswers = [
 ];
 var startEl=document.getElementById('start');
 var timerEl=document.querySelector("#time");
-var startScreen=document.querySelector("#start-screen");
+var startScreen=document.getElementById("start-screen");
 var questionEl=document.getElementById('questions');
-var optionEls=document.querySelector('#choices');
+var optionEls=document.getElementById('choices');
 var feedbackEl = document.getElementById("feedback");
+var end = document.getElementById("end-screen");
+var finalScoreEl = document.getElementById("final-score");
+var intialsinput=document.querySelector("#initials");
+var submitEl=document.getElementById("submit");
+
 var timer;
+var score = 0;
 var timerCount;
-var currentQuestion=1;
+var currentQuestion=0;
 startEl.addEventListener("click",function(event){
 	event.preventDefault();
-    startScreen.style.display = "none";
+    startScreen.classList.add('hide');
+    questionEl.classList.remove("hide"); 
 	timerCount=questionAnswers.length*15;
-	startScreen.classList.add('hide');
+	startScreen.classList.add('start');
 	stratime();
 	getquestion();
 	
@@ -57,11 +61,10 @@ function stratime(){
 		timerCount--;
 		timerEl.textContent=timerCount;
 		if(timerCount===0){
-			clearInterval(timer);
-			// confirm("gameover");
+			endGame();
 		}
 	},1000);
-}
+};
 
 
 
@@ -72,24 +75,57 @@ optionEls.innerHTML="";
 current.options.forEach(function(choice){
     var button = document.createElement("button");
     button.textContent = choice;
-    button.classList.add("choice");
-    button.addEventListener("click", selectAnswer);
+    button.classList.add("choices");
+    button.addEventListener("click", correctAnswer);
     optionEls.appendChild(button);
 });
 }
 
-function selectAnswer(event){
+function correctAnswer(event){
 	var selectedOption = event.target;
     var correct = selectedOption.textContent === questionAnswers[currentQuestion].answer;
     if (correct) {
         score+=10;
         feedbackEl.textContent ="Correct!";
     } else{
-    	timer -= 10;
+        feedbackEl.textContent ="Wrong";
+    	timerCount -= 10;
     }
     feedbackEl.classList.remove("hide");
-   
-         
-
-
+    setTimeout(() => {
+        feedbackEl.classList.add("hide");
+      }, 300);
+      currentQuestion++;
+    if(currentQuestion<questionAnswers.length){
+    	getquestion();
+    }else{
+        endGame();
+    }
 };
+
+function endGame() {  
+    clearInterval(timer);
+    questionEl.classList.add("hide");
+    questionEl.style.display='none';
+    end.classList.remove("hide");
+    finalScoreEl.textContent = score;
+};
+
+function highScores(){
+    var intials=intialsinput.value.trim();
+    if(intials!==''){
+        var newHighscore={intials,score};
+        var highestScores=JSON.parse(localStorage.getItem("highScores"))||[];
+        highestScores.push(newHighscore);
+        localStorage.setItem('highestScores',JSON.stringify(highestScores));
+        window.location.href="highscores.html";
+    }
+};
+
+startEl.addEventListener("click", getquestion);
+submitEl.addEventListener("click", highScores);
+var highScoresLink = document.querySelector(".scores a");
+highScoresLink.addEventListener("click", function(e){
+    e.preventDefault();
+    window.location.href="highscores.html";
+    });
