@@ -1,88 +1,34 @@
-# Module 6 Challenge Web APIs: Code Quiz
+# Web APIs: Code Quiz
 
-## Your Task
+## Description
+Welcome to the Code Quiz! This interactive Quiz is designed with dynamically updated HTML and CSS powered by JavaScript code. It features a series of multiple-choice questions, and the time remaining is automatically tracked. 
 
-As you proceed in your journey to becoming a front-end web developer, it’s likely that you’ll be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment is a combination of multiple-choice questions and interactive coding challenges. 
+The game begins with a start button, which, when clicked, will start the timer and display the first question. After answering a question, the next question will appear automatically. If an incorrect answer is selected, time will be subtracted from the timer.
 
-To help you become familiar with these tests and give you a chance to apply the skills from this module, this week’s challenge invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. This week’s coursework has taught you all the skills you need to succeed in this challenge.
+When all questions have been answered or the timer reaches 0, the game will end, and the player will be presented with their final score. The player will also have the opportunity to save their score and initials by typing them into a designated input field.
 
 
-## User Story
+## Live Application URL
+
+https://venkatamora.github.io/Bootcampuk2023-Portfolio-6-Code-Quiz/
+
+## Screenshot
+![Output gif](<./Final_output/Coding Quiz.gif>)
+
+## Technologies Used
+* HTML
+* CSS
+* JavaScript
+
+## Deployment
+
+To clone the repository, use the following command:
 
 ```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
+git clone https://github.com/VenkataMora/Bootcampuk2023-Portfolio-6-Code-Quiz
+
 ```
 
-## Acceptance Criteria
+## License
 
-Create a code quiz that contains the following requirements:
-
-* A start button that when clicked a timer starts and the first question appears.
- 
-  * Questions contain buttons for each answer.
-  * 
-  * When answer is clicked, the next question appears
-  * 
-  * If the answer clicked was incorrect then subtract time from the clock
-
-* The quiz should end when all questions are answered or the timer reaches 0.
-
-  * When the game ends, it should display their score and give the user the ability to save their initials and their score
-  
-## Mock-Up
-
-The following animation demonstrates the application functionality:
-
-![Animation of code quiz. Presses button to start quiz. Clicks the button for the answer to each question, displays if answer was correct or incorrect. Quiz finishes and displays high scores. User adds their intials, then clears their intials and starts over.](./assets/08-web-apis-challenge-demo.gif)
-
-## Grading Requirements
-
-This challenge is graded based on the following criteria: 
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
-
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
